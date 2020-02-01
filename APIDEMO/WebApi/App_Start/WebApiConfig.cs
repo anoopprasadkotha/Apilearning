@@ -32,8 +32,11 @@ namespace WebApi
             //in case we need to createw the own media type formatter we need to inherit from mediatypeformatter class
 
             //to remove the xml formatter so by default irrecpect of the accept header it returns only xml 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            //config.Formatters.Remove(config.Formatters.XmlFormatter);
 
+
+            //making changes so that by default when the request is raised from browser we make the api to return Json
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
         }
     }
 }
